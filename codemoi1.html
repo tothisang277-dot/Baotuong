@@ -1,0 +1,1138 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Báo tường PTDTNT tỉnh Lạng Sơn</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #F2E6EA 0%, #f8f0f2 100%);
+  color: #333;
+  line-height: 1.6;
+  position: relative;
+  min-height: 100vh;
+}
+
+/* Trang trí nền */
+.bg-decoration {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.bg-decoration::before,
+.bg-decoration::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.1;
+}
+
+.bg-decoration::before {
+  width: 300px;
+  height: 300px;
+  background: #ad1457;
+  top: 10%;
+  left: -100px;
+}
+
+.bg-decoration::after {
+  width: 200px;
+  height: 200px;
+  background: #f48fb1;
+  bottom: 10%;
+  right: -80px;
+}
+
+/* Header */
+header {
+  background: linear-gradient(to right, #ad1457, #d81b60);
+  color: white;
+  text-align: center;
+  padding: 25px 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  position: relative;
+  z-index: 10;
+}
+
+header h1 {
+  font-size: 2.5rem;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+header p {
+  font-size: 1.1rem;
+  opacity: 0.9;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Menu */
+.menu-toggle {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  background: #ad1457;
+  color: white;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  cursor: pointer;
+  z-index: 1001;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s;
+}
+
+.menu-toggle:hover {
+  background: #d81b60;
+  transform: scale(1.05);
+}
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: -300px;
+  width: 300px;
+  height: 100%;
+  background: white;
+  box-shadow: 5px 0 15px rgba(0, 0, 0, 0.1);
+  padding: 80px 20px 20px;
+  z-index: 1000;
+  transition: all 0.4s;
+  overflow-y: auto;
+}
+
+.sidebar.active {
+  left: 0;
+}
+
+.sidebar h3 {
+  color: #ad1457;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #f48fb1;
+  font-size: 1.5rem;
+}
+
+.sidebar-menu {
+  list-style: none;
+}
+
+.sidebar-menu li {
+  margin-bottom: 12px;
+}
+
+.sidebar-menu a {
+  display: flex;
+  align-items: center;
+  padding: 12px 15px;
+  background: #f9f9f9;
+  color: #333;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: all 0.3s;
+  font-weight: 500;
+}
+
+.sidebar-menu a i {
+  margin-right: 12px;
+  color: #ad1457;
+  font-size: 1.2rem;
+}
+
+.sidebar-menu a:hover,
+.sidebar-menu a.active {
+  background: #f0e6ea;
+  color: #ad1457;
+  transform: translateX(5px);
+}
+
+/* Main content */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 30px 20px;
+}
+
+/* Page */
+.page {
+  display: none;
+  animation: fadeIn 0.5s ease;
+}
+
+.page.active {
+  display: block;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Khung báo tường */
+.frame {
+  background: white;
+  border-radius: 15px;
+  padding: 30px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+  border: 3px double #f48fb1;
+  margin-bottom: 40px;
+  position: relative;
+  overflow: hidden;
+}
+
+.frame::before {
+  content: "🌸 🌺 🌸";
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 1.8rem;
+  opacity: 0.3;
+}
+
+/* Mục lục */
+.toc {
+  background: #f9f9f9;
+  border-left: 5px solid #ad1457;
+  padding: 20px;
+  border-radius: 8px;
+  margin: 25px 0;
+}
+
+.toc h3 {
+  color: #ad1457;
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+}
+
+.toc h3 i {
+  margin-right: 10px;
+}
+
+.toc-links {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 12px;
+}
+
+.toc-links a {
+  display: flex;
+  align-items: center;
+  padding: 10px 15px;
+  background: white;
+  border-radius: 6px;
+  color: #333;
+  text-decoration: none;
+  transition: all 0.3s;
+  border: 1px solid #eee;
+}
+
+.toc-links a i {
+  margin-right: 10px;
+  color: #ad1457;
+}
+
+.toc-links a:hover {
+  background: #f0e6ea;
+  color: #ad1457;
+  transform: translateY(-3px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Tiêu đề section */
+.section-title {
+  color: #ad1457;
+  margin: 30px 0 20px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #f48fb1;
+  display: flex;
+  align-items: center;
+}
+
+.section-title i {
+  margin-right: 10px;
+  font-size: 1.8rem;
+}
+
+/* Gallery */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+  margin: 25px 0;
+}
+
+.gallery-item {
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s;
+}
+
+.gallery-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  display: block;
+}
+
+.gallery-item p {
+  padding: 15px;
+  background: white;
+  font-style: italic;
+  color: #666;
+  text-align: center;
+}
+
+/* Scroll gallery */
+.scroll-gallery {
+  display: flex;
+  overflow-x: auto;
+  gap: 15px;
+  padding: 20px 10px;
+  margin: 25px 0;
+  scrollbar-width: thin;
+  scrollbar-color: #f48fb1 #f0f0f0;
+}
+
+.scroll-gallery::-webkit-scrollbar {
+  height: 8px;
+}
+
+.scroll-gallery::-webkit-scrollbar-track {
+  background: #f0f0f0;
+  border-radius: 10px;
+}
+
+.scroll-gallery::-webkit-scrollbar-thumb {
+  background: #f48fb1;
+  border-radius: 10px;
+}
+
+.scroll-item {
+  flex: 0 0 auto;
+  width: 300px;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.scroll-item img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+/* Video */
+.video-container {
+  position: relative;
+  width: 100%;
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 25px 0;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.video-container video {
+  width: 100%;
+  display: block;
+}
+
+.video-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 3rem;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.video-container:hover .video-overlay {
+  opacity: 1;
+}
+
+.video-caption {
+  text-align: center;
+  font-style: italic;
+  color: #666;
+  margin-top: 10px;
+}
+
+/* Form góp ý */
+.feedback-form {
+  background: #f9f9f9;
+  border-radius: 10px;
+  padding: 25px;
+  margin-top: 25px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  color: #333;
+  font-weight: 500;
+}
+
+.checkbox-group {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 10px;
+}
+
+.checkbox-item {
+  display: flex;
+  align-items: center;
+  padding: 8px 12px;
+  background: white;
+  border-radius: 6px;
+}
+
+.checkbox-item input {
+  margin-right: 10px;
+}
+
+textarea {
+  width: 100%;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 1rem;
+  resize: vertical;
+  min-height: 120px;
+}
+
+textarea:focus {
+  outline: none;
+  border-color: #ad1457;
+}
+
+.btn {
+  background: linear-gradient(to right, #ad1457, #d81b60);
+  color: white;
+  border: none;
+  padding: 12px 30px;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn i {
+  margin-right: 8px;
+}
+
+.btn:hover {
+  background: linear-gradient(to right, #d81b60, #ad1457);
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Thông tin liên hệ */
+.contact-info {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+  margin-top: 25px;
+}
+
+.contact-card {
+  background: white;
+  border-radius: 10px;
+  padding: 25px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: all 0.3s;
+}
+
+.contact-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.contact-card i {
+  font-size: 2.5rem;
+  color: #ad1457;
+  margin-bottom: 15px;
+}
+
+.contact-card h4 {
+  color: #333;
+  margin-bottom: 10px;
+}
+
+/* Nội dung và ảnh xen kẽ */
+.content-image-section {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  margin: 30px 0;
+}
+
+.content-image-section.reverse {
+  flex-direction: row-reverse;
+}
+
+.content-image-section .content {
+  flex: 1;
+}
+
+.content-image-section .image {
+  flex: 1;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.content-image-section .image img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  display: block;
+}
+
+/* Bản đồ */
+.map-container {
+  width: 100%;
+  height: 400px;
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 25px 0;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  border: 3px solid #f48fb1;
+}
+
+/* Footer */
+footer {
+  background: linear-gradient(to right, #ad1457, #d81b60);
+  color: white;
+  text-align: center;
+  padding: 25px 20px;
+  margin-top: 50px;
+}
+
+.footer-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.share-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin: 20px 0;
+}
+
+.share-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: white;
+  color: #ad1457;
+  text-decoration: none;
+  transition: all 0.3s;
+}
+
+.share-btn:hover {
+  transform: scale(1.1);
+  background: #f0e6ea;
+}
+
+.copyright {
+  margin-top: 20px;
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  header h1 {
+    font-size: 2rem;
+  }
+  
+  .sidebar {
+    width: 280px;
+  }
+  
+  .toc-links {
+    grid-template-columns: 1fr;
+  }
+  
+  .gallery {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  }
+  
+  .scroll-item {
+    width: 280px;
+  }
+  
+  .contact-info {
+    grid-template-columns: 1fr;
+  }
+  
+  .content-image-section {
+    flex-direction: column;
+  }
+  
+  .content-image-section.reverse {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 20px 15px;
+  }
+  
+  .frame {
+    padding: 20px;
+  }
+  
+  .gallery {
+    grid-template-columns: 1fr;
+  }
+  
+  .scroll-item {
+    width: 260px;
+  }
+}
+
+/* Fallback cho ảnh không tải được */
+.image-fallback {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #f48fb1 0%, #ad1457 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-align: center;
+  padding: 20px;
+}
+
+.image-fallback i {
+  font-size: 3rem;
+  margin-bottom: 15px;
+}
+</style>
+</head>
+<body>
+<!-- Trang trí nền -->
+<div class="bg-decoration"></div>
+
+<!-- Menu toggle -->
+<div class="menu-toggle" id="menuToggle">
+  <i class="fas fa-bars"></i>
+</div>
+
+<!-- Sidebar -->
+<aside class="sidebar" id="sidebar">
+  <h3><i class="fas fa-newspaper"></i> Báo tường</h3>
+  <ul class="sidebar-menu">
+    <li><a href="#baotuong" class="active" onclick="showPage('baotuong')"><i class="fas fa-home"></i> Trang chủ</a></li>
+    <li><a href="#gioithieu" onclick="showPage('gioithieu')"><i class="fas fa-users"></i> Giới thiệu nhóm</a></li>
+    <li><a href="#lienhe" onclick="showPage('lienhe')"><i class="fas fa-address-card"></i> Liên hệ</a></li>
+    <li><a href="#gopy" onclick="showPage('gopy')"><i class="fas fa-comment-dots"></i> Góp ý</a></li>
+  </ul>
+  
+  <h3 style="margin-top: 40px;"><i class="fas fa-link"></i> Chia sẻ</h3>
+  <div style="text-align: center; padding: 15px;">
+    <p style="margin-bottom: 15px; font-size: 0.9rem;">Chia sẻ báo tường này với bạn bè:</p>
+    <div class="share-buttons">
+      <a href="#" class="share-btn" title="Chia sẻ Facebook"><i class="fab fa-facebook-f"></i></a>
+      <a href="#" class="share-btn" title="Chia sẻ Zalo"><i class="fab fa-twitter"></i></a>
+      <a href="#" class="share-btn" title="Sao chép link"><i class="fas fa-link"></i></a>
+    </div>
+  </div>
+</aside>
+
+<!-- Header -->
+<header>
+  <h1>BÁO TƯỜNG ĐIỆN TỬ</h1>
+  <p>Trường PTDTNT tỉnh Lạng Sơn - Nơi ghi dấu những kỷ niệm đẹp của tuổi học trò</p>
+</header>
+
+<!-- Main content -->
+<main class="container">
+  <!-- Trang báo tường -->
+  <section id="baotuong" class="page active">
+    <div class="frame">
+      <div style="text-align: center; margin-bottom: 25px;">
+        <h2 style="color: #ad1457; font-size: 2.2rem; margin-bottom: 10px;"><i class="fas fa-pencil-alt"></i> Lời Ngỏ</h2>
+        <p style="font-size: 1.1rem; max-width: 800px; margin: 0 auto;">
+          Báo tường là nơi lưu giữ những kỷ niệm đẹp, những khoảnh khắc đáng nhớ và hoạt động tiêu biểu của thầy trò trường PTDTNT tỉnh Lạng Sơn. 
+          Đây không chỉ là sản phẩm báo chí mà còn là tấm lòng, tình cảm của học sinh dành tặng mái trường thân yêu.
+        </p>
+      </div>
+
+      <!-- Mục lục -->
+      <div class="toc">
+        <h3><i class="fas fa-list"></i> Nội dung báo tường</h3>
+        <div class="toc-links">
+          <a href="#m1"><i class="fas fa-school"></i> 1. Mái trường thân yêu</a>
+          <a href="#m2"><i class="fas fa-trophy"></i> 2. Hoạt động & Thành tích</a>
+          <a href="#m3"><i class="fas fa-home"></i> 3. Đời sống nội trú</a>
+          <a href="#m4"><i class="fas fa-car"></i> 4. An toàn giao thông</a>
+          <a href="#m5"><i class="fas fa-heart"></i> 5. Tri ân thầy cô</a>
+        </div>
+      </div>
+
+      <!-- Mục 1 -->
+      <h2 id="m1" class="section-title"><i class="fas fa-school"></i> 1. Mái trường thân yêu</h2>
+      <p>
+        Trường PTDTNT tỉnh Lạng Sơn là mái nhà chung của học sinh các dân tộc thiểu số trên địa bàn tỉnh. 
+        Nơi đây không chỉ là nơi các em được tiếp thu tri thức mà còn là môi trường rèn luyện nhân cách, 
+        bồi dưỡng kỹ năng sống trong không gian kỷ luật, yêu thương và giàu bản sắc văn hóa.
+      </p>
+      
+      <div class="gallery">
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Trường PTDTNT tỉnh Lạng Sơn" onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"400\" height=\"200\" viewBox=\"0 0 400 200\"><rect width=\"400\" height=\"200\" fill=\"%23f48fb1\"/><text x=\"200\" y=\"100\" font-family=\"Arial\" font-size=\"24\" fill=\"white\" text-anchor=\"middle\" dy=\".3em\">Trường PTDTNT</text></svg>';">
+          <p>Toàn cảnh trường PTDTNT tỉnh Lạng Sơn</p>
+        </div>
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1524178234883-043d5c3f3cf4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Học sinh trường PTDTNT" onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"400\" height=\"200\" viewBox=\"0 0 400 200\"><rect width=\"400\" height=\"200\" fill=\"%23ad1457\"/><text x=\"200\" y=\"100\" font-family=\"Arial\" font-size=\"20\" fill=\"white\" text-anchor=\"middle\" dy=\".3em\">Học sinh các dân tộc</text></svg>';">
+          <p>Học sinh các dân tộc trong trang phục truyền thống</p>
+        </div>
+      </div>
+
+      <!-- Mục 2 -->
+      <h2 id="m2" class="section-title"><i class="fas fa-trophy"></i> 2. Hoạt động & Thành tích</h2>
+      <p>
+        Nhà trường luôn chú trọng phát triển toàn diện cho học sinh thông qua các hoạt động học tập, 
+        văn nghệ, thể thao và các phong trào thi đua. Những thành tích đạt được là minh chứng cho sự nỗ lực 
+        không ngừng của cả thầy và trò.
+      </p>
+      
+      <div class="scroll-gallery">
+        <div class="scroll-item">
+          <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Hoạt động văn nghệ" onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"400\" height=\"200\" viewBox=\"0 0 400 200\"><rect width=\"400\" height=\"200\" fill=\"%23f48fb1\"/><text x=\"200\" y=\"100\" font-family=\"Arial\" font-size=\"20\" fill=\"white\" text-anchor=\"middle\" dy=\".3em\">Hoạt động văn nghệ</text></svg>';">
+          <p style="padding: 10px; text-align: center;">Tiết mục văn nghệ chào mừng ngày Nhà giáo Việt Nam</p>
+        </div>
+        <div class="scroll-item">
+          <img src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Học sinh giỏi" onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"400\" height=\"200\" viewBox=\"0 0 400 200\"><rect width=\"400\" height=\"200\" fill=\"%23ad1457\"/><text x=\"200\" y=\"100\" font-family=\"Arial\" font-size=\"20\" fill=\"white\" text-anchor=\"middle\" dy=\".3em\">Học sinh giỏi</text></svg>';">
+          <p style="padding: 10px; text-align: center;">Học sinh đạt giải cao trong kỳ thi học sinh giỏi cấp tỉnh</p>
+        </div>
+        <div class="scroll-item">
+          <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Hoạt động thể thao" onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"400\" height=\"200\" viewBox=\"0 0 400 200\"><rect width=\"400\" height=\"200\" fill=\"%23f48fb1\"/><text x=\"200\" y=\"100\" font-family=\"Arial\" font-size=\"20\" fill=\"white\" text-anchor=\"middle\" dy=\".3em\">Hoạt động thể thao</text></svg>';">
+          <p style="padding: 10px; text-align: center;">Giải bóng đá học sinh nội trú hàng năm</p>
+        </div>
+      </div>
+
+      <!-- Mục 3 -->
+      <h2 id="m3" class="section-title"><i class="fas fa-home"></i> 3. Đời sống nội trú</h2>
+      <p>
+        Với đặc thù là trường nội trú, học sinh được sống trong môi trường tập thể, học cách tự lập, 
+        chia sẻ và yêu thương. Các hoạt động sinh hoạt chung giúp gắn kết tình bạn, tạo nên những kỷ niệm đẹp.
+      </p>
+      
+      <div class="gallery">
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Sinh hoạt nội trú" onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"400\" height=\"200\" viewBox=\"0 0 400 200\"><rect width=\"400\" height=\"200\" fill=\"%23ad1457\"/><text x=\"200\" y=\"100\" font-family=\"Arial\" font-size=\"20\" fill=\"white\" text-anchor=\"middle\" dy=\".3em\">Sinh hoạt nội trú</text></svg>';">
+          <p>Sinh hoạt tập thể cuối tuần của học sinh nội trú</p>
+        </div>
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1588072432836-e10032774350?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Ký túc xá" onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"400\" height=\"200\" viewBox=\"0 0 400 200\"><rect width=\"400\" height=\"200\" fill=\"%23f48fb1\"/><text x=\"200\" y=\"100\" font-family=\"Arial\" font-size=\"20\" fill=\"white\" text-anchor=\"middle\" dy=\".3em\">Ký túc xá</text></svg>';">
+          <p>Khu ký túc xá khang trang, sạch đẹp</p>
+        </div>
+      </div>
+
+      <!-- Mục 4 -->
+      <h2 id="m4" class="section-title"><i class="fas fa-car"></i> 4. An toàn giao thông</h2>
+      <p>
+        An toàn giao thông là vấn đề quan trọng, gắn liền với cuộc sống hằng ngày của mỗi người.
+        Nhà trường thường xuyên tổ chức các buổi tuyên truyền, sinh hoạt chuyên đề nhằm nâng cao 
+        nhận thức cho học sinh về việc chấp hành nghiêm chỉnh luật giao thông.
+      </p>
+      
+      <div class="video-container">
+        <video controls poster="https://images.unsplash.com/photo-1544636331-e26879cd4d9b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80">
+          <source src="https://assets.mixkit.co/videos/preview/mixkit-group-of-students-having-a-meeting-4465-large.mp4" type="video/mp4">
+          Trình duyệt của bạn không hỗ trợ video.
+        </video>
+        <div class="video-overlay">
+          <i class="fas fa-play-circle"></i>
+        </div>
+      </div>
+      <p class="video-caption">Video tuyên truyền về an toàn giao thông của học sinh nhà trường</p>
+
+      <!-- Mục 5 -->
+      <h2 id="m5" class="section-title"><i class="fas fa-heart"></i> 5. Tri ân thầy cô</h2>
+      <p>
+        Xin gửi lời tri ân chân thành tới thầy cô - những người âm thầm gieo chữ, thắp sáng ước mơ cho bao thế hệ học trò. 
+        Dẫu tháng năm trôi qua, công ơn dạy dỗ ấy vẫn luôn là hành trang quý giá theo chúng em trên mỗi chặng đường đời.
+      </p>
+      
+      <div class="scroll-gallery">
+        <div class="scroll-item">
+          <img src="https://images.unsplash.com/photo-1577896851231-70ef18881754?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Thầy cô giáo" onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"400\" height=\"200\" viewBox=\"0 0 400 200\"><rect width=\"400\" height=\"200\" fill=\"%23ad1457\"/><text x=\"200\" y=\"100\" font-family=\"Arial\" font-size=\"20\" fill=\"white\" text-anchor=\"middle\" dy=\".3em\">Thầy cô giáo</text></svg>';">
+          <p style="padding: 10px; text-align: center;">Thầy cô trường PTDTNT tỉnh Lạng Sơn</p>
+        </div>
+        <div class="scroll-item">
+          <img src="https://images.unsplash.com/photo-1524178234883-043d5c3f3cf4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Học sinh chào cờ" onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"400\" height=\"200\" viewBox=\"0 0 400 200\"><rect width=\"400\" height=\"200\" fill=\"%23f48fb1\"/><text x=\"200\" y=\"100\" font-family=\"Arial\" font-size=\"20\" fill=\"white\" text-anchor=\"middle\" dy=\".3em\">Lễ chào cờ</text></svg>';">
+          <p style="padding: 10px; text-align: center;">Lễ chào cờ đầu tuần</p>
+        </div>
+        <div class="scroll-item">
+          <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Lễ tri ân" onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"400\" height=\"200\" viewBox=\"0 0 400 200\"><rect width=\"400\" height=\"200\" fill=\"%23ad1457\"/><text x=\"200\" y=\"100\" font-family=\"Arial\" font-size=\"20\" fill=\"white\" text-anchor=\"middle\" dy=\".3em\">Lễ tri ân</text></svg>';">
+          <p style="padding: 10px; text-align: center;">Lễ tri ân thầy cô nhân ngày 20/11</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Trang giới thiệu -->
+  <section id="gioithieu" class="page">
+    <div class="frame">
+      <h2 class="section-title"><i class="fas fa-users"></i> Giới thiệu nhóm thực hiện</h2>
+      
+      <!-- Nội dung và ảnh xen kẽ 1 -->
+      <div class="content-image-section">
+        <div class="content">
+          <h3 style="color: #ad1457; margin-bottom: 15px;">Về nhóm thực hiện</h3>
+          <p>
+            Nhóm thực hiện báo tường điện tử này gồm những học sinh ưu tú, sáng tạo và đầy nhiệt huyết của trường PTDTNT tỉnh Lạng Sơn. 
+            Chúng em đến từ các lớp khác nhau, với mong muốn tạo ra một sản phẩm ý nghĩa để tri ân thầy cô và lưu giữ những kỷ niệm đẹp dưới mái trường này.
+          </p>
+          <p>
+            Mỗi thành viên trong nhóm đều có những thế mạnh riêng, từ khả năng viết lách, thiết kế đồ họa, đến kỹ năng công nghệ thông tin. 
+            Chúng em đã cùng nhau lên ý tưởng, thiết kế và hoàn thiện nội dung trong suốt nhiều tuần qua.
+          </p>
+        </div>
+        <div class="image">
+          <img src="https://images.unsplash.com/photo-1544717305-2782549b5136?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Nhóm học sinh thực hiện báo tường" onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"400\" height=\"300\" viewBox=\"0 0 400 300\"><rect width=\"400\" height=\"300\" fill=\"%23f48fb1\"/><text x=\"200\" y=\"150\" font-family=\"Arial\" font-size=\"24\" fill=\"white\" text-anchor=\"middle\" dy=\".3em\">Nhóm thực hiện</text><text x=\"200\" y=\"180\" font-family=\"Arial\" font-size=\"16\" fill=\"white\" text-anchor=\"middle\" dy=\".3em\">Báo tường PTDTNT</text></svg>';">
+        </div>
+      </div>
+      
+      <!-- Nội dung và ảnh xen kẽ 2 -->
+      <div class="content-image-section reverse">
+        <div class="content">
+          <h3 style="color: #ad1457; margin-bottom: 15px;">Quá trình thực hiện</h3>
+          <p>
+            Để có được báo tường điện tử hoàn chỉnh như hôm nay, nhóm chúng em đã trải qua nhiều giai đoạn: 
+            từ việc lên ý tưởng, phân công nhiệm vụ, sưu tầm tư liệu, chụp ảnh, viết bài, cho đến thiết kế và lập trình.
+          </p>
+          <p>
+            Chúng em đã dành nhiều buổi sinh hoạt ngoại khóa để cùng nhau thảo luận, chỉnh sửa và hoàn thiện từng chi tiết. 
+            Mỗi thành viên đều đóng góp công sức và tâm huyết để tạo nên sản phẩm này.
+          </p>
+        </div>
+        <div class="image">
+          <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Làm việc nhóm" onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"400\" height=\"300\" viewBox=\"0 0 400 300\"><rect width=\"400\" height=\"300\" fill=\"%23ad1457\"/><text x=\"200\" y=\"150\" font-family=\"Arial\" font-size=\"24\" fill=\"white\" text-anchor=\"middle\" dy=\".3em\">Làm việc nhóm</text><text x=\"200\" y=\"180\" font-family=\"Arial\" font-size=\"16\" fill=\"white\" text-anchor=\"middle\" dy=\".3em\">Thảo luận ý tưởng</text></svg>';">
+        </div>
+      </div>
+      
+      <!-- Thêm phần bản đồ vị trí trường -->
+      <h3 style="color: #ad1457; margin: 40px 0 20px; text-align: center;"><i class="fas fa-map-marked-alt"></i> Vị trí trường PTDTNT tỉnh Lạng Sơn</h3>
+      <div class="map-container">
+        <!-- Bản đồ Google Maps -->
+        <iframe 
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3695.015965562912!2d106.76149807502962!3d21.857099964679716!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31453e1020689efd%3A0xcfcdc9f809febe64!2zVHLGsOG7nW5nIFBUIERUIE5UIFThuqFuZyBM4bqhbmcgU8ahbiAtIFRQLiBM4bqhbmcgU8ahbiwgVmnhu4d0IE5hbQ!5e1!3m2!1svi!2s!4v1711700000000!5m2!1svi!2s" 
+          width="100%" 
+          height="400" 
+          style="border:0;" 
+          allowfullscreen="" 
+          loading="lazy" 
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+      <p style="text-align: center; margin-top: 15px; font-style: italic; color: #666;">
+        Trường PTDTNT tỉnh Lạng Sơn tọa lạc tại số 32 Hoàng Đình Kinh, phường Đông Kinh, thành phố Lạng Sơn
+      </p>
+    </div>
+  </section>
+
+  <!-- Trang liên hệ -->
+  <section id="lienhe" class="page">
+    <div class="frame">
+      <h2 class="section-title"><i class="fas fa-address-card"></i> Liên hệ với chúng tôi</h2>
+      <p>
+        Mọi thông tin liên hệ về báo tường hoặc đóng góp ý kiến, xin vui lòng liên hệ qua các kênh sau:
+      </p>
+      
+      <div class="contact-info">
+        <div class="contact-card">
+          <i class="fas fa-map-marker-alt"></i>
+          <h4>Địa chỉ</h4>
+          <p>32 Hoàng Đình Kinh, Phường Đông Kinh, TP Lạng Sơn, Tỉnh Lạng Sơn</p>
+        </div>
+        
+        <div class="contact-card">
+          <i class="fas fa-phone-alt"></i>
+          <h4>Điện thoại</h4>
+          <p>(0205) 3.812.345</p>
+          <p>09xxxxxxx (Cô Hương - Tổng phụ trách)</p>
+        </div>
+        
+        <div class="contact-card">
+          <i class="fas fa-envelope"></i>
+          <h4>Email</h4>
+          <p>baotuong@ptdtntlangson.edu.vn</p>
+          <p>ptdtntlangson@gmail.com</p>
+        </div>
+        
+        <div class="contact-card">
+          <i class="fab fa-facebook"></i>
+          <h4>Facebook</h4>
+          <p><a href="https://www.facebook.com/ptdtntlangson" target="_blank" style="color: #ad1457; text-decoration: none;">fb.com/ptdtntlangson</a></p>
+          <p>Theo dõi để cập nhật thông tin mới nhất</p>
+        </div>
+      </div>
+      
+      <div style="margin-top: 30px; text-align: center;">
+        <h3 style="color: #ad1457; margin-bottom: 15px;"><i class="fas fa-map-marked-alt"></i> Bản đồ trường</h3>
+        <div class="map-container">
+          <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3695.015965562912!2d106.76149807502962!3d21.857099964679716!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31453e1020689efd%3A0xcfcdc9f809febe64!2zVHLGsOG7nW5nIFBUIERUIE5UIFThuqFuZyBM4bqhbmcgU8ahbiAtIFRQLiBM4bqhbmcgU8ahbiwgVmnhu4d0IE5hbQ!5e1!3m2!1svi!2s!4v1711700000000!5m2!1svi!2s" 
+            width="100%" 
+            height="400" 
+            style="border:0;" 
+            allowfullscreen="" 
+            loading="lazy" 
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Trang góp ý -->
+  <section id="gopy" class="page">
+    <div class="frame">
+      <h2 class="section-title"><i class="fas fa-comment-dots"></i> Góp ý cho báo tường</h2>
+      <p>
+        Để báo tường ngày càng hoàn thiện hơn, chúng em rất mong nhận được những ý kiến đóng góp quý báu từ thầy cô và các bạn.
+        Xin vui lòng cho biết cảm nhận của bạn về báo tường điện tử của chúng em.
+      </p>
+      
+      <div class="feedback-form">
+        <h3 style="color: #ad1457; margin-bottom: 20px;">Đánh giá của bạn</h3>
+        
+        <div class="form-group">
+          <label>Bạn cảm thấy thế nào về báo tường này?</label>
+          <div class="checkbox-group">
+            <div class="checkbox-item">
+              <input type="checkbox" id="opt1">
+              <label for="opt1">Nội dung đầy đủ, ý nghĩa</label>
+            </div>
+            <div class="checkbox-item">
+              <input type="checkbox" id="opt2">
+              <label for="opt2">Hình ảnh đẹp, phù hợp</label>
+            </div>
+            <div class="checkbox-item">
+              <input type="checkbox" id="opt3">
+              <label for="opt3">Bố cục rõ ràng, dễ theo dõi</label>
+            </div>
+            <div class="checkbox-item">
+              <input type="checkbox" id="opt4">
+              <label for="opt4">Thiết kế đẹp mắt, chuyên nghiệp</label>
+            </div>
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <label for="message">Ý kiến khác của bạn:</label>
+          <textarea id="message" placeholder="Xin vui lòng nhập ý kiến đóng góp của bạn tại đây..."></textarea>
+        </div>
+        
+        <div class="form-group">
+          <label for="email">Email của bạn (nếu muốn nhận phản hồi):</label>
+          <input type="email" id="email" placeholder="example@gmail.com" style="width: 100%; padding: 12px 15px; border: 1px solid #ddd; border-radius: 8px; font-family: inherit;">
+        </div>
+        
+        <button class="btn" onclick="submitFeedback()">
+          <i class="fas fa-paper-plane"></i> Gửi góp ý
+        </button>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-content">
+    <h3 style="margin-bottom: 15px;">BÁO TƯỜNG ĐIỆN TỬ</h3>
+    <p>Trường Phổ thông Dân tộc Nội trú tỉnh Lạng Sơn</p>
+    
+    <div class="share-buttons">
+      <a href="#" class="share-btn" title="Chia sẻ Facebook"><i class="fab fa-facebook-f"></i></a>
+      <a href="#" class="share-btn" title="Chia sẻ Zalo"><i class="fab fa-twitter"></i></a>
+      <a href="#" class="share-btn" title="Sao chép link" id="copyLinkBtn"><i class="fas fa-link"></i></a>
+      <a href="#" class="share-btn" title="Tải về"><i class="fas fa-download"></i></a>
+    </div>
+    
+    <div class="copyright">
+      <p>© 2023 - Báo tường điện tử PTDTNT tỉnh Lạng Sơn. Mọi quyền được bảo lưu.</p>
+      <p>Thiết kế bởi nhóm học sinh trường PTDTNT tỉnh Lạng Sơn</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Menu toggle
+const menuToggle = document.getElementById('menuToggle');
+const sidebar = document.getElementById('sidebar');
+
+menuToggle.addEventListener('click', function() {
+  sidebar.classList.toggle('active');
+});
+
+// Đóng menu khi click bên ngoài
+document.addEventListener('click', function(event) {
+  if (!sidebar.contains(event.target) && !menuToggle.contains(event.target)) {
+    sidebar.classList.remove('active');
+  }
+});
+
+// Chuyển trang
+function showPage(pageId) {
+  // Ẩn tất cả các trang
+  document.querySelectorAll('.page').forEach(page => {
+    page.classList.remove('active');
+  });
+  
+  // Hiện trang được chọn
+  document.getElementById(pageId).classList.add('active');
+  
+  // Cập nhật menu active
+  document.querySelectorAll('.sidebar-menu a').forEach(link => {
+    link.classList.remove('active');
+  });
+  
+  event.target.classList.add('active');
+  
+  // Đóng menu trên mobile
+  if (window.innerWidth < 768) {
+    sidebar.classList.remove('active');
+  }
+}
+
+// Sao chép link
+document.getElementById('copyLinkBtn').addEventListener('click', function(e) {
+  e.preventDefault();
+  const currentUrl = window.location.href;
+  
+  navigator.clipboard.writeText(currentUrl).then(() => {
+    alert('Đã sao chép link báo tường vào clipboard!');
+  });
+});
+
+// Gửi góp ý
+function submitFeedback() {
+  const checkedBoxes = document.querySelectorAll('input[type="checkbox"]:checked');
+  const message = document.getElementById('message').value;
+  
+  if (checkedBoxes.length === 0 && message.trim() === '') {
+    alert('Vui lòng chọn ít nhất một đánh giá hoặc nhập ý kiến của bạn!');
+    return;
+  }
+  
+  alert('Cảm ơn bạn đã góp ý cho báo tường của chúng em!');
+  
+  // Reset form
+  document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+    checkbox.checked = false;
+  });
+  document.getElementById('message').value = '';
+  document.getElementById('email').value = '';
+}
+
+// Tự động cuộn mượt khi click vào link trong mục lục
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function(e) {
+    const targetId = this.getAttribute('href');
+    if (targetId.startsWith('#')) {
+      e.preventDefault();
+      const targetElement = document.querySelector(targetId);
+      if (targetElement) {
+        window.scrollTo({
+          top: targetElement.offsetTop - 100,
+          behavior: 'smooth'
+        });
+      }
+    }
+  });
+});
+
+// Hiệu ứng khi cuộn trang
+window.addEventListener('scroll', function() {
+  const scrollPosition = window.scrollY;
+  
+  // Hiệu ứng cho menu
+  if (scrollPosition > 100) {
+    menuToggle.style.transform = 'scale(0.95)';
+  } else {
+    menuToggle.style.transform = 'scale(1)';
+  }
+});
+
+// Fallback cho ảnh không tải được
+document.addEventListener('DOMContentLoaded', function() {
+  const images = document.querySelectorAll('img');
+  
+  images.forEach(img => {
+    img.addEventListener('error', function() {
+      // Tạo fallback SVG
+      const fallbackSVG = `<div class="image-fallback">
+        <i class="fas fa-image"></i>
+        <p>${this.alt || 'Hình ảnh'}</p>
+        <p>Trường PTDTNT tỉnh Lạng Sơn</p>
+      </div>`;
+      
+      // Thay thế ảnh bằng fallback
+      const parent = this.parentElement;
+      if (parent.classList.contains('gallery-item') || 
+          parent.classList.contains('scroll-item') || 
+          parent.classList.contains('image')) {
+        parent.innerHTML = fallbackSVG;
+      }
+    });
+  });
+});
+</script>
+</body>
+</html>
